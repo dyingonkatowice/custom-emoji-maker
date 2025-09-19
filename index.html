@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Custom Emoji Builder</title>
+</head>
+<body>
+    <div class="container">
+        <h1>😁🎨 Build Your Emoji</h1>
+        
+        <div class="emoji-builder">
+            <div class="emoji-preview">
+                <div class="current-step-info">
+                    <div class="step-number" id="stepNumber">Step 1 of 7</div>
+                    <div class="step-title" id="stepTitle">Choose Skin Tone</div>
+                </div>
+                
+                <div class="emoji-display">
+                    <div class="emoji-face" id="emojiface">
+                        <!-- Features will be added dynamically -->
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn-random" onclick="randomizeEmoji()">🎲 Random</button>
+                    <button class="btn-reset" onclick="resetEmoji()">↺ Reset</button>
+                    <button class="btn-action" onclick="saveEmoji()">💾 Save</button>
+                </div>
+            </div>
+            
+            <div class="feature-controls">
+                <!-- Step 1: Skin Tone -->
+                <div class="feature-section active" id="step-skin">
+                    <div class="feature-options">
+                        <div class="feature-option" onclick="selectSkin('light', event)" data-skin="light">
+                            <div class="option-preview skin-light"></div>
+                            <div class="option-label">Light</div>
+                        </div>
+                        <div class="feature-option" onclick="selectSkin('medium-light', event)" data-skin="medium-light">
+                            <div class="option-preview skin-medium-light"></div>
+                            <div class="option-label">Medium Light</div>
+                        </div>
+                        <div class="feature-option" onclick="selectSkin('medium', event)" data-skin="medium">
+                            <div class="option-preview skin-medium"></div>
+                            <div class="option-label">Medium</div>
+                        </div>
+                        <div class="feature-option" onclick="selectSkin('medium-dark', event)" data-skin="medium-dark">
+                            <div class="option-preview skin-medium-dark"></div>
+                            <div class="option-label">Medium Dark</div>
+                        </div>
+                        <div class="feature-option" onclick="selectSkin('dark', event)" data-skin="dark">
+                            <div class="option-preview skin-dark"></div>
+                            <div class="option-label">Dark</div>
+                        </div>
+                        <div class="feature-option" onclick="selectSkin('very-dark', event)" data-skin="very-dark">
+                            <div class="option-preview skin-very-dark"></div>
+                            <div class="option-label">Very Dark</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Hair -->
+                <div class="feature-section" id="step-hair">
+                    <div class="feature-options">
+                        <div class="feature-option" onclick="selectHair('none', 'brown', event)" data-type="none">
+                            <div class="option-preview" style="background: #f0f0f0; color: #999;">✕</div>
+                            <div class="option-label">Bald</div>
+                        </div>
+                        <div class="feature-option" onclick="selectHair('short', 'brown', event)" data-type="short" data-color="brown">
+                            <div class="option-preview hair-brown" style="border-radius: 50% 50% 20% 20%;"></div>
+                            <div class="option-label">Short</div>
+                        </div>
+                        <div class="feature-option" onclick="selectHair('long', 'brown', event)" data-type="long" data-color="brown">
+                            <div class="option-preview hair-brown" style="border-radius: 50% 50% 30% 30%; height: 80px;"></div>
+                            <div class="option-label">Long</div>
+                        </div>
+                        <div class="feature-option" onclick="selectHair('curly', 'black', event)" data-type="curly" data-color="black">
+                            <div class="option-preview hair-black" style="border-radius: 60% 40% 60% 40%;"></div>
+                            <div class="option-label">Curly</div>
+                        </div>
+                        <div class="feature-option" onclick="selectHair('spiky', 'brown', event)" data-type="spiky" data-color="brown">
+                            <div class="option-preview hair-brown" style="border-radius: 50% 50% 0% 0%;"></div>
+                            <div class="option-label">Spiky</div>
+                        </div>
+                        <div class="feature-option" onclick="selectHair('afro', 'black', event)" data-type="afro" data-color="black">
+                            <div class="option-preview hair-black" style="border-radius: 80% 80% 60% 60%;"></div>
+                            <div class="option-label">Afro</div>
+                        </div>
+                        <div class="feature-option" onclick="selectHair('ponytail', 'blonde', event)" data-type="ponytail" data-color="blonde">
+                            <div class="option-preview hair-blonde" style="border-radius: 100px 100px 30px 30px;"></div>
+                            <div class="option-label">Ponytail</div>
+                        </div>
+                        <div class="feature-option" onclick="selectHair('short', 'pink', event)" data-type="short" data-color="pink">
+                            <div class="option-preview" style="background: #FF69B4; border-radius: 50% 50% 20% 20%;"></div>
+                            <div class="option-label">Pink</div>
+                        </div>
+                        <div class="feature-option" onclick="selectHair('short', 'blue', event)" data-type="short" data-color="blue">
+                            <div class="option-preview" style="background: #4169E1; border-radius: 50% 50% 20% 20%;"></div>
+                            <div class="option-label">Blue</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Eyes -->
+                <div class="feature-section" id="step-eyes">
+                    <div class="feature-options">
+                        <div class="feature-option" onclick="selectEyes('normal', event)" data-type="normal">
+                            <div class="option-preview" style="display: flex; gap: 15px; align-items: center; justify-content: center;">
+                                <div style="width: 12px; height: 12px; background: #333; border-radius: 50%;"></div>
+                                <div style="width: 12px; height: 12px; background: #333; border-radius: 50%;"></div>
+                            </div>
+                            <div class="option-label">Normal</div>
+                        </div>
+                        <div class="feature-option" onclick="selectEyes('closed', event)" data-type="closed">
+                            <div class="option-preview" style="display: flex; gap: 15px; align-items: center; justify-content: center;">
+                                <div style="width: 15px; height: 3px; background: #333; border-radius: 2px;"></div>
+                                <div style="width: 15px; height: 3px; background: #333; border-radius: 2px;"></div>
+                            </div>
+                            <div class="option-label">Closed</div>
+                        </div>
+                        <div class="feature-option" onclick="selectEyes('wink', event)" data-type="wink">
+                            <div class="option-preview" style="display: flex; gap: 15px; align-items: center; justify-content: center;">
+                                <div style="width: 12px; height: 12px; background: #333; border-radius: 50%;"></div>
+                                <div style="width: 15px; height: 3px; background: #333; border-radius: 2px;"></div>
+                            </div>
+                            <div class="option-label">Wink</div>
+                        </div>
+                        <div class="feature-option" onclick="selectEyes('wide', event)" data-type="wide">
+                            <div class="option-preview" style="display: flex; gap: 10px; align-items: center; justify-content: center;">
+                                <div style="width: 18px; height: 18px; border: 2px solid #333; border-radius: 50%; background: white; position: relative;">
+                                    <div style="width: 6px; height: 6px; background: #333; border-radius: 50%; position: absolute; top: 4px; left: 4px;"></div>
+                                </div>
+                                <div style="width: 18px; height: 18px; border: 2px solid #333; border-radius: 50%; background: white; position: relative;">
+                                    <div style="width: 6px; height: 6px; background: #333; border-radius: 50%; position: absolute; top: 4px; left: 4px;"></div>
+                                </div>
+                            </div>
+                            <div class="option-label">Wide</div>
+                        </div>
+                        <div class="feature-option" onclick="selectEyes('heart', event)" data-type="heart">
+                            <div class="option-preview" style="display: flex; gap: 15px; align-items: center; justify-content: center; color: #ff69b4;">
+                                ♥ ♥
+                            </div>
+                            <div class="option-label">Heart Eyes</div>
+                        </div>
+                        <div class="feature-option" onclick="selectEyes('sleepy', event)" data-type="sleepy">
+                            <div class="option-preview" style="display: flex; gap: 15px; align-items: center; justify-content: center;">
+                                <div style="width: 12px; height: 12px; background: #333; border-radius: 50%; position: relative;">
+                                    <div style="width: 8px; height: 1px; background: #333; position: absolute; top: 8px; left: 2px; transform: rotate(-15deg);"></div>
+                                </div>
+                                <div style="width: 12px; height: 12px; background: #333; border-radius: 50%; position: relative;">
+                                    <div style="width: 8px; height: 1px; background: #333; position: absolute; top: 8px; left: 2px; transform: rotate(15deg);"></div>
+                                </div>
+                            </div>
+                            <div class="option-label">Sleepy</div>
+                        </div>
+                        <div class="feature-option" onclick="selectEyes('surprised', event)" data-type="surprised">
+                            <div class="option-preview" style="display: flex; gap: 8px; align-items: center; justify-content: center;">
+                                <div style="width: 20px; height: 20px; border: 3px solid #333; border-radius: 50%; background: white; position: relative;">
+                                    <div style="width: 8px; height: 8px; background: #333; border-radius: 50%; position: absolute; top: 4px; left: 4px;"></div>
+                                </div>
+                                <div style="width: 20px; height: 20px; border: 3px solid #333; border-radius: 50%; background: white; position: relative;">
+                                    <div style="width: 8px; height: 8px; background: #333; border-radius: 50%; position: absolute; top: 4px; left: 4px;"></div>
+                                </div>
+                            </div>
+                            <div class="option-label">Surprised</div>
+                        </div>
+                        <div class="feature-option" onclick="selectEyes('angry', event)" data-type="angry">
+                            <div class="option-preview" style="display: flex; gap: 15px; align-items: center; justify-content: center;">
+                                <div style="width: 12px; height: 12px; background: #333; border-radius: 50%; position: relative;">
+                                    <div style="width: 8px; height: 1px; background: #333; position: absolute; top: 2px; left: 1px; transform: rotate(-20deg);"></div>
+                                </div>
+                                <div style="width: 12px; height: 12px; background: #333; border-radius: 50%; position: relative;">
+                                    <div style="width: 8px; height: 1px; background: #333; position: absolute; top: 2px; left: 1px; transform: rotate(20deg);"></div>
+                                </div>
+                            </div>
+                            <div class="option-label">Angry</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Nose -->
+                <div class="feature-section" id="step-nose">
+                    <div class="feature-options">
+                        <div class="feature-option" onclick="selectNose('none', event)" data-type="none">
+                            <div class="option-preview" style="color: #999;">✕</div>
+                            <div class="option-label">None</div>
+                        </div>
+                        <div class="feature-option" onclick="selectNose('small', event)" data-type="small">
+                            <div class="option-preview" style="display: flex; align-items: center; justify-content: center;">
+                                <div style="width: 4px; height: 4px; background: #333; border-radius: 50%;"></div>
+                            </div>
+                            <div class="option-label">Small</div>
+                        </div>
+                        <div class="feature-option" onclick="selectNose('normal', event)" data-type="normal">
+                            <div class="option-preview" style="display: flex; align-items: center; justify-content: center;">
+                                <div style="width: 8px; height: 8px; background: #333; border-radius: 50%;"></div>
+                            </div>
+                            <div class="option-label">Normal</div>
+                        </div>
+                        <div class="feature-option" onclick="selectNose('big', event)" data-type="big">
+                            <div class="option-preview" style="display: flex; align-items: center; justify-content: center;">
+                                <div style="width: 12px; height: 12px; background: #333; border-radius: 50%;"></div>
+                            </div>
+                            <div class="option-label">Big</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Mouth -->
+                <div class="feature-section" id="step-mouth">
+                    <div class="feature-options">
+                        <div class="feature-option" onclick="selectMouth('neutral', event)" data-type="neutral">
+                            <div class="option-preview" style="display: flex; align-items: center; justify-content: center;">
+                                <div style="width: 20px; height: 3px; background: #333; border-radius: 2px;"></div>
+                            </div>
+                            <div class="option-label">Neutral</div>
+                        </div>
+                        <div class="feature-option" onclick="selectMouth('smile', event)" data-type="smile">
+                            <div class="option-preview" style="display: flex; align-items: center; justify-content: center;">
+                                <div style="width: 30px; height: 15px; border: 3px solid #333; border-top: none; border-radius: 0 0 30px 30px;"></div>
+                            </div>
+                            <div class="option-label">Smile</div>
+                        </div>
+                        <div class="feature-option" onclick="selectMouth('frown', event)" data-type="frown">
+                            <div class="option-preview" style="display: flex; align-items: center; justify-content: center;">
+                                <div style="width: 30px; height: 15px; border: 3px solid #333; border-bottom: none; border-radius: 30px 30px 0 0;"></div>
+                            </div>
+                            <div class="option-label">Sad</div>
+                        </div>
+                        <div class="feature-option" onclick="selectMouth('open', event)" data-type="open">
+                            <div class="option-preview" style="display: flex; align-items: center; justify-content: center;">
+                                <div style="width: 15px; height: 20px; background: #333; border-radius: 50%;"></div>
+                            </div>
+                            <div class="option-label">Open</div>
+                        </div>
+                        <div class="feature-option" onclick="selectMouth('kiss', event)" data-type="kiss">
+                            <div class="option-preview" style="display: flex; align-items: center; justify-content: center; color: #ff69b4;">
+                                💋
+                            </div>
+                            <div class="option-label">Kiss</div>
+                        </div>
+                        <div class="feature-option" onclick="selectMouth('tongue', event)" data-type="tongue">
+                            <div class="option-preview" style="display: flex; align-items: center; justify-content: center;">
+                                <div style="width: 15px; height: 12px; background: #ff69b4; border-radius: 50%; position: relative;">
+                                    <div style="width: 6px; height: 8px; background: #ff69b4; border-radius: 50%; position: absolute; top: 6px; left: 4px;"></div>
+                                </div>
+                            </div>
+                            <div class="option-label">Tongue</div>
+                        </div>
+                        <div class="feature-option" onclick="selectMouth('teeth', event)" data-type="teeth">
+                            <div class="option-preview" style="display: flex; align-items: center; justify-content: center;">
+                                <div style="width: 20px; height: 10px; border: 2px solid #333; border-top: none; border-radius: 0 0 10px 10px; background: white; position: relative;">
+                                    <div style="width: 16px; height: 1px; background: #333; position: absolute; top: 3px; left: 2px;"></div>
+                                </div>
+                            </div>
+                            <div class="option-label">Teeth</div>
+                        </div>
+                        <div class="feature-option" onclick="selectMouth('laugh', event)" data-type="laugh">
+                            <div class="option-preview" style="display: flex; align-items: center; justify-content: center;">
+                                <div style="width: 30px; height: 15px; border: 2px solid #333; border-top: none; border-radius: 0 0 30px 30px;"></div>
+                            </div>
+                            <div class="option-label">Laugh</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 6: Accessories -->
+                <div class="feature-section" id="step-accessories">
+                    <div class="feature-options">
+                        <div class="feature-option" onclick="selectAccessory('none', event)" data-type="none">
+                            <div class="option-preview" style="color: #999;">✕</div>
+                            <div class="option-label">None</div>
+                        </div>
+                        <div class="feature-option" onclick="selectAccessory('glasses', event)" data-type="glasses">
+                            <div class="option-preview" style="display: flex; gap: 15px; align-items: center; justify-content: center;">
+                                <div style="width: 20px; height: 20px; border: 2px solid #333; border-radius: 50%;"></div>
+                                <div style="width: 20px; height: 20px; border: 2px solid #333; border-radius: 50%;"></div>
+                            </div>
+                            <div class="option-label">Glasses</div>
+                        </div>
+                        <div class="feature-option" onclick="selectAccessory('sunglasses', event)" data-type="sunglasses">
+                            <div class="option-preview" style="display: flex; gap: 15px; align-items: center; justify-content: center;">
+                                <div style="width: 20px; height: 20px; background: #333; border-radius: 50%;"></div>
+                                <div style="width: 20px; height: 20px; background: #333; border-radius: 50%;"></div>
+                            </div>
+                            <div class="option-label">Sunglasses</div>
+                        </div>
+                        <div class="feature-option" onclick="selectAccessory('hat', event)" data-type="hat">
+                            <div class="option-preview" style="display: flex; align-items: center; justify-content: center;">
+                                <div style="width: 40px; height: 15px; background: #8B4513; border-radius: 20px 20px 0 0;"></div>
+                            </div>
+                            <div class="option-label">Hat</div>
+                        </div>
+                        <div class="feature-option" onclick="selectAccessory('crown', event)" data-type="crown">
+                            <div class="option-preview" style="display: flex; align-items: center; justify-content: center;">
+                                <div style="width: 35px; height: 12px; background: linear-gradient(45deg, #FFD700, #FFA500); border-radius: 17px 17px 0 0; position: relative;">
+                                    <div style="width: 5px; height: 8px; background: #FFD700; position: absolute; top: -8px; left: 7px; transform: rotate(45deg);"></div>
+                                    <div style="width: 5px; height: 8px; background: #FFD700; position: absolute; top: -8px; left: 15px; transform: rotate(45deg);"></div>
+                                    <div style="width: 5px; height: 8px; background: #FFD700; position: absolute; top: -8px; left: 23px; transform: rotate(45deg);"></div>
+                                </div>
+                            </div>
+                            <div class="option-label">Crown</div>
+                        </div>
+                        <div class="feature-option" onclick="selectAccessory('mask', event)" data-type="mask">
+                            <div class="option-preview" style="display: flex; align-items: center; justify-content: center;">
+                                <div style="width: 30px; height: 15px; background: #000; border-radius: 15px; position: relative;">
+                                    <div style="width: 8px; height: 8px; background: #fff; border-radius: 50%; position: absolute; top: 3px; left: 5px;"></div>
+                                    <div style="width: 8px; height: 8px; background: #fff; border-radius: 50%; position: absolute; top: 3px; left: 17px;"></div>
+                                </div>
+                            </div>
+                            <div class="option-label">Mask</div>
+                        </div>
+                        <div class="feature-option" onclick="selectAccessory('earrings', event)" data-type="earrings">
+                            <div class="option-preview" style="display: flex; gap: 20px; align-items: center; justify-content: center;">
+                                <div style="width: 3px; height: 6px; background: #FFD700; border-radius: 50%;"></div>
+                                <div style="width: 3px; height: 6px; background: #FFD700; border-radius: 50%;"></div>
+                            </div>
+                            <div class="option-label">Earrings</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 7: Finish -->
+                <div class="feature-section" id="step-finish">
+                    <div style="text-align: center; padding: 40px;">
+                        <h2 style="color: #333; margin-bottom: 20px;">🎉 Your Emoji is Complete!</h2>
+                        <p style="color: #666; margin-bottom: 30px;">You can now save it, create variations, or start over.</p>
+                        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                            <button class="btn-action" onclick="saveEmoji()">💾 Save This Emoji</button>
+                            <button class="btn-random" onclick="randomizeEmoji()">🎲 Random Variation</button>
+                            <button class="btn-reset" onclick="resetEmoji()">🆕 Start New</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navigation">
+                    <button class="btn-nav" id="prevBtn" onclick="previousStep()" disabled>← Previous</button>
+                    <button class="btn-nav" id="nextBtn" onclick="nextStep()">Next →</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="saved-emojis">
+            <h2 style="color: #333; margin-bottom: 15px;">Your Custom Emojis</h2>
+            <div class="saved-grid" id="savedGrid">
+                <p style="grid-column: 1/-1; color: #666;">No emojis saved yet. Create your first custom emoji!</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

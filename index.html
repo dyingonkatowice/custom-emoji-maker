@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>😁🎨 Build Your Emoji</h1>
+        <h1><span class="title-emojis">😁🎨</span> <span class="title-text">Build Your Emoji</span></h1>
         
         <div class="emoji-builder">
             <div class="emoji-preview">
@@ -139,17 +139,6 @@
                             </div>
                             <div class="option-label">Heart Eyes</div>
                         </div>
-                        <div class="feature-option" onclick="selectEyes('sleepy', event)" data-type="sleepy">
-                            <div class="option-preview" style="display: flex; gap: 15px; align-items: center; justify-content: center;">
-                                <div style="width: 12px; height: 12px; background: #333; border-radius: 50%; position: relative;">
-                                    <div style="width: 8px; height: 1px; background: #333; position: absolute; top: 8px; left: 2px; transform: rotate(-15deg);"></div>
-                                </div>
-                                <div style="width: 12px; height: 12px; background: #333; border-radius: 50%; position: relative;">
-                                    <div style="width: 8px; height: 1px; background: #333; position: absolute; top: 8px; left: 2px; transform: rotate(15deg);"></div>
-                                </div>
-                            </div>
-                            <div class="option-label">Sleepy</div>
-                        </div>
                         <div class="feature-option" onclick="selectEyes('surprised', event)" data-type="surprised">
                             <div class="option-preview" style="display: flex; gap: 8px; align-items: center; justify-content: center;">
                                 <div style="width: 20px; height: 20px; border: 3px solid #333; border-radius: 50%; background: white; position: relative;">
@@ -160,17 +149,6 @@
                                 </div>
                             </div>
                             <div class="option-label">Surprised</div>
-                        </div>
-                        <div class="feature-option" onclick="selectEyes('angry', event)" data-type="angry">
-                            <div class="option-preview" style="display: flex; gap: 15px; align-items: center; justify-content: center;">
-                                <div style="width: 12px; height: 12px; background: #333; border-radius: 50%; position: relative;">
-                                    <div style="width: 8px; height: 1px; background: #333; position: absolute; top: 2px; left: 1px; transform: rotate(-20deg);"></div>
-                                </div>
-                                <div style="width: 12px; height: 12px; background: #333; border-radius: 50%; position: relative;">
-                                    <div style="width: 8px; height: 1px; background: #333; position: absolute; top: 2px; left: 1px; transform: rotate(20deg);"></div>
-                                </div>
-                            </div>
-                            <div class="option-label">Angry</div>
                         </div>
                     </div>
                 </div>
@@ -250,12 +228,6 @@
                             </div>
                             <div class="option-label">Teeth</div>
                         </div>
-                        <div class="feature-option" onclick="selectMouth('laugh', event)" data-type="laugh">
-                            <div class="option-preview" style="display: flex; align-items: center; justify-content: center;">
-                                <div style="width: 30px; height: 15px; border: 2px solid #333; border-top: none; border-radius: 0 0 30px 30px;"></div>
-                            </div>
-                            <div class="option-label">Laugh</div>
-                        </div>
                     </div>
                 </div>
 
@@ -317,11 +289,7 @@
                 <div class="feature-section" id="step-finish">
                     <div style="text-align: center; padding: 40px;">
                         <h2 style="color: #333; margin-bottom: 20px;">🎉 Your Emoji is Complete!</h2>
-                        <p style="color: #666; margin-bottom: 30px;">You can now save it, create variations, or start over.</p>
-                        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                            <button class="btn-random" onclick="randomizeEmoji()">🎲 Random Variation</button>
-                            <button class="btn-reset" onclick="resetEmoji()">🆕 Start New</button>
-                        </div>
+                        <p style="color: #666; margin-bottom: 30px;">Use the buttons above to create variations or start over.</p>
                     </div>
                 </div>
 

@@ -46,15 +46,6 @@
                         <div style="color: #ff69b4; font-size: 28px;">♥</div>
                         <div style="color: #ff69b4; font-size: 28px;">♥</div>
                     `;
-                case 'sleepy':
-                    return `
-                        <div style="width: 28px; height: 28px; background: #333; border-radius: 50%; position: relative;">
-                            <div style="width: 18px; height: 4px; background: #333; border-radius: 2px; position: absolute; top: 18px; left: 4px; transform: rotate(-15deg);"></div>
-                        </div>
-                        <div style="width: 28px; height: 28px; background: #333; border-radius: 50%; position: relative;">
-                            <div style="width: 18px; height: 4px; background: #333; border-radius: 2px; position: absolute; top: 18px; left: 4px; transform: rotate(15deg);"></div>
-                        </div>
-                    `;
                 case 'surprised':
                     return `
                         <div style="width: 38px; height: 38px; border: 3px solid #333; border-radius: 50%; background: white; position: relative;">
@@ -62,15 +53,6 @@
                         </div>
                         <div style="width: 38px; height: 38px; border: 3px solid #333; border-radius: 50%; background: white; position: relative;">
                             <div style="width: 14px; height: 14px; background: #333; border-radius: 50%; position: absolute; top: 10px; left: 10px;"></div>
-                        </div>
-                    `;
-                case 'angry':
-                    return `
-                        <div style="width: 28px; height: 28px; background: #333; border-radius: 50%; position: relative;">
-                            <div style="width: 20px; height: 4px; background: #333; border-radius: 2px; position: absolute; top: 6px; left: 3px; transform: rotate(-20deg);"></div>
-                        </div>
-                        <div style="width: 28px; height: 28px; background: #333; border-radius: 50%; position: relative;">
-                            <div style="width: 20px; height: 4px; background: #333; border-radius: 2px; position: absolute; top: 6px; left: 3px; transform: rotate(20deg);"></div>
                         </div>
                     `;
                 default:
@@ -106,8 +88,6 @@
                     return '<div style="width: 25px; height: 20px; background: #ff69b4; border-radius: 50%; position: relative;"><div style="width: 12px; height: 15px; background: #ff69b4; border-radius: 50%; position: absolute; top: 12px; left: 6px;"></div></div>';
                 case 'teeth':
                     return '<div style="width: 45px; height: 20px; border: 3px solid #333; border-top: none; border-radius: 0 0 22px 22px; background: white; position: relative;"><div style="width: 36px; height: 3px; background: #333; position: absolute; top: 8px; left: 4px;"></div></div>';
-                case 'laugh':
-                    return '<div style="width: 55px; height: 28px; border: 3px solid #333; border-top: none; border-radius: 0 0 55px 55px;"></div>';
                 default:
                     return '<div style="width: 35px; height: 4px; background: #333; border-radius: 3px;"></div>';
             }
@@ -295,13 +275,13 @@
             const skins = Object.keys(skinColors);
             currentEmoji.skin = skins[Math.floor(Math.random() * skins.length)];
 
-            const eyeTypes = ['normal', 'closed', 'wink', 'wide', 'heart', 'sleepy', 'surprised', 'angry'];
+            const eyeTypes = ['normal', 'closed', 'wink', 'wide', 'heart', 'surprised'];
             currentEmoji.eyes = eyeTypes[Math.floor(Math.random() * eyeTypes.length)];
 
             const noseTypes = ['none', 'small', 'normal', 'big'];
             currentEmoji.nose = noseTypes[Math.floor(Math.random() * noseTypes.length)];
 
-            const mouthTypes = ['neutral', 'smile', 'frown', 'open', 'kiss', 'tongue', 'teeth', 'laugh'];
+            const mouthTypes = ['neutral', 'smile', 'frown', 'open', 'kiss', 'tongue', 'teeth'];
             currentEmoji.mouth = mouthTypes[Math.floor(Math.random() * mouthTypes.length)];
 
             updateEmojiDisplay();

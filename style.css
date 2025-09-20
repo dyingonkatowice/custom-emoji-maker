@@ -9,6 +9,10 @@ body {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
     padding: 20px;
+    margin: 0;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .container {
@@ -18,17 +22,33 @@ body {
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     padding: 30px;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
 }
 
 h1 {
     text-align: center;
-    color: #fff;
     margin-bottom: 30px;
     font-size: 2.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.title-emojis {
+    font-size: 1.2em;
+    filter: none;
+    color: inherit;
+}
+
+.title-text {
     background: linear-gradient(45deg, #667eea, #764ba2);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    color: #667eea;
 }
 
 .emoji-builder {
@@ -138,6 +158,9 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
 }
 
 .feature-option:hover {
@@ -267,9 +290,47 @@ button {
 .hair-red { background: #B22222; }
 .hair-gray { background: #808080; }
 
+/* Tablet and small desktop */
+@media (max-width: 1024px) {
+    .container {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .emoji-builder {
+        gap: 30px;
+    }
+    
+    .feature-options {
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    }
+}
+
+/* Mobile landscape and small tablets */
 @media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 20px;
+        border-radius: 15px;
+    }
+    
+    h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .title-emojis {
+        font-size: 1.5em;
+    }
+    
     .emoji-builder {
         grid-template-columns: 1fr;
+        gap: 25px;
     }
     
     .emoji-display {
@@ -279,5 +340,257 @@ button {
     
     .feature-options {
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 12px;
+    }
+    
+    .feature-option {
+        padding: 15px;
+        min-height: 100px;
+    }
+    
+    .option-preview {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .action-buttons {
+        gap: 8px;
+    }
+    
+    button {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+    
+    .navigation {
+        gap: 10px;
+    }
+    
+    .btn-nav {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+}
+
+/* Mobile portrait */
+@media (max-width: 480px) {
+    body {
+        padding: 5px;
+        overflow-x: hidden;
+    }
+    
+    .container {
+        padding: 15px;
+        border-radius: 10px;
+        margin: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+    
+    .title-emojis {
+        font-size: 1.3em;
+    }
+    
+    .emoji-preview {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .emoji-display {
+        width: 180px;
+        height: 180px;
+        margin: 0 auto 15px;
+    }
+    
+    .feature-controls {
+        padding: 15px;
+    }
+    
+    .feature-options {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+    
+    .feature-option {
+        padding: 15px 10px;
+        min-height: 100px;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .option-preview {
+        width: 45px;
+        height: 45px;
+        margin-bottom: 8px;
+    }
+    
+    .option-label {
+        font-size: 12px;
+        font-weight: bold;
+    }
+    
+    .action-buttons {
+        flex-direction: row;
+        gap: 10px;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    
+    button {
+        padding: 12px 20px;
+        font-size: 14px;
+        flex: 1;
+        max-width: 150px;
+        border-radius: 8px;
+    }
+    
+    .navigation {
+        flex-direction: row;
+        gap: 10px;
+        justify-content: center;
+    }
+    
+    .btn-nav {
+        padding: 12px 20px;
+        font-size: 14px;
+        flex: 1;
+        max-width: 150px;
+    }
+    
+    .step-number {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    
+    .step-title {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .current-step-info {
+        margin-bottom: 15px;
+    }
+    
+    .credit {
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        text-align: center;
+    }
+    
+    .credit p {
+        font-size: 12px;
+        padding: 6px 10px;
+        margin: 0;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 320px) {
+    body {
+        padding: 2px;
+        overflow-x: hidden;
+    }
+    
+    .container {
+        padding: 10px;
+        margin: 0;
+        border-radius: 8px;
+    }
+    
+    h1 {
+        font-size: 1.5em;
+        flex-direction: column;
+        gap: 6px;
+        margin-bottom: 10px;
+    }
+    
+    .title-emojis {
+        font-size: 1.1em;
+    }
+    
+    .emoji-display {
+        width: 160px;
+        height: 160px;
+        margin: 0 auto 10px;
+    }
+    
+    .emoji-preview {
+        padding: 10px;
+    }
+    
+    .feature-controls {
+        padding: 10px;
+    }
+    
+    .feature-options {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    .feature-option {
+        padding: 12px 8px;
+        min-height: 85px;
+        border-radius: 10px;
+    }
+    
+    .option-preview {
+        width: 35px;
+        height: 35px;
+        margin-bottom: 6px;
+    }
+    
+    .option-label {
+        font-size: 11px;
+    }
+    
+    .action-buttons {
+        gap: 8px;
+    }
+    
+    button {
+        padding: 10px 15px;
+        font-size: 12px;
+    }
+    
+    .navigation {
+        gap: 8px;
+    }
+    
+    .btn-nav {
+        padding: 10px 15px;
+        font-size: 12px;
+    }
+    
+    .step-number {
+        font-size: 14px;
+    }
+    
+    .step-title {
+        font-size: 18px;
+    }
+    
+    .credit {
+        bottom: 5px;
+        left: 5px;
+        right: 5px;
+    }
+    
+    .credit p {
+        font-size: 11px;
+        padding: 4px 8px;
     }
 }

@@ -26,7 +26,6 @@
                 <div class="action-buttons">
                     <button class="btn-random" onclick="randomizeEmoji()">🎲 Random</button>
                     <button class="btn-reset" onclick="resetEmoji()">↺ Reset</button>
-                    <button class="btn-action" onclick="saveEmoji()">💾 Save</button>
                 </div>
             </div>
             
@@ -34,29 +33,29 @@
                 <!-- Step 1: Skin Tone -->
                 <div class="feature-section active" id="step-skin">
                     <div class="feature-options">
-                        <div class="feature-option" onclick="selectSkin('light', event)" data-skin="light">
-                            <div class="option-preview skin-light"></div>
-                            <div class="option-label">Light</div>
+                        <div class="feature-option" onclick="selectSkin('pink', event)" data-skin="pink">
+                            <div class="option-preview skin-pink"></div>
+                            <div class="option-label">Pink</div>
                         </div>
-                        <div class="feature-option" onclick="selectSkin('medium-light', event)" data-skin="medium-light">
-                            <div class="option-preview skin-medium-light"></div>
-                            <div class="option-label">Medium Light</div>
+                        <div class="feature-option" onclick="selectSkin('yellow', event)" data-skin="yellow">
+                            <div class="option-preview skin-yellow"></div>
+                            <div class="option-label">Yellow</div>
                         </div>
-                        <div class="feature-option" onclick="selectSkin('medium', event)" data-skin="medium">
-                            <div class="option-preview skin-medium"></div>
-                            <div class="option-label">Medium</div>
+                        <div class="feature-option" onclick="selectSkin('orange', event)" data-skin="orange">
+                            <div class="option-preview skin-orange"></div>
+                            <div class="option-label">Orange</div>
                         </div>
-                        <div class="feature-option" onclick="selectSkin('medium-dark', event)" data-skin="medium-dark">
-                            <div class="option-preview skin-medium-dark"></div>
-                            <div class="option-label">Medium Dark</div>
+                        <div class="feature-option" onclick="selectSkin('green', event)" data-skin="green">
+                            <div class="option-preview skin-green"></div>
+                            <div class="option-label">Green</div>
                         </div>
-                        <div class="feature-option" onclick="selectSkin('dark', event)" data-skin="dark">
-                            <div class="option-preview skin-dark"></div>
-                            <div class="option-label">Dark</div>
+                        <div class="feature-option" onclick="selectSkin('blue', event)" data-skin="blue">
+                            <div class="option-preview skin-blue"></div>
+                            <div class="option-label">Blue</div>
                         </div>
-                        <div class="feature-option" onclick="selectSkin('very-dark', event)" data-skin="very-dark">
-                            <div class="option-preview skin-very-dark"></div>
-                            <div class="option-label">Very Dark</div>
+                        <div class="feature-option" onclick="selectSkin('purple', event)" data-skin="purple">
+                            <div class="option-preview skin-purple"></div>
+                            <div class="option-label">Purple</div>
                         </div>
                     </div>
                 </div>
@@ -328,7 +327,6 @@
                         <h2 style="color: #333; margin-bottom: 20px;">🎉 Your Emoji is Complete!</h2>
                         <p style="color: #666; margin-bottom: 30px;">You can now save it, create variations, or start over.</p>
                         <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                            <button class="btn-action" onclick="saveEmoji()">💾 Save This Emoji</button>
                             <button class="btn-random" onclick="randomizeEmoji()">🎲 Random Variation</button>
                             <button class="btn-reset" onclick="resetEmoji()">🆕 Start New</button>
                         </div>
@@ -342,13 +340,13 @@
             </div>
         </div>
         
-        <div class="saved-emojis">
-            <h2 style="color: #333; margin-bottom: 15px;">Your Custom Emojis</h2>
-            <div class="saved-grid" id="savedGrid">
-                <p style="grid-column: 1/-1; color: #666;">No emojis saved yet. Create your first custom emoji!</p>
-            </div>
-        </div>
     </div>
+    
+    <!-- Credit -->
+    <div class="credit">
+        <p>Coded by: Avni Guzen</p>
+    </div>
+    
     <script src="script.js"></script>
 </body>
 </html>

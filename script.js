@@ -195,14 +195,33 @@
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
 
-            if (prevBtn) prevBtn.disabled = currentStep === 1;
-            if (nextBtn) nextBtn.disabled = currentStep === 5;
-
+            if (prevBtn) {
+                if (currentStep === 5) {
+                    prevBtn.disabled = false;
+                    prevBtn.textContent = '🎲 Randomize';
+                    prevBtn.onclick = function() {
+                        randomizeEmoji();
+                    };
+                } else {
+                    prevBtn.disabled = currentStep === 1;
+                    prevBtn.textContent = '← Previous';
+                    prevBtn.onclick = function() {
+                        previousStep();
+                    };
+                }
+            }
+            
             if (nextBtn) {
                 if (currentStep === 5) {
-                    nextBtn.textContent = 'Finished!';
+                    nextBtn.textContent = 'Start Over';
+                    nextBtn.onclick = function() {
+                        resetEmoji();
+                    };
                 } else {
                     nextBtn.textContent = 'Next →';
+                    nextBtn.onclick = function() {
+                        nextStep();
+                    };
                 }
             }
         }
